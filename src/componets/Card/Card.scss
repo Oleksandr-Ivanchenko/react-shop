@@ -1,0 +1,23 @@
+.card {
+  font-size: 16px;
+  line-height: 26px;
+  min-height: 254px;
+  text-align: center;
+
+  &__img {
+    overflow: hidden;
+    position: relative;
+    width: initial;
+    margin-bottom: 25px;
+    height: 250px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}
