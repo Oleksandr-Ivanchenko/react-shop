@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import { NotFoundPage } from './componets/NotFoundPage/NotFoundPage';
+import { NotFoundPage } from './componets/NotFoundPage';
 import { GoodItem } from './componets/GoodItem';
 import { Home } from './componets/Home';
 
