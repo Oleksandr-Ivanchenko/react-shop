@@ -1,5 +1,3 @@
-import { Provider } from 'react-redux';
-import { store } from './store';
 import { 
   Routes,
   Route
@@ -10,14 +8,11 @@ import { Home } from './componets/Home';
 
 function App() {
   return (
-      <Provider store={store}>
-        <Routes>
-          <Route path='/' element={(<Home />)} />
-          <Route path='/good/:id' element={<GoodItem />} />
-         
-          {/* <Route path='*' element={<NotFoundPage />} /> */}
-        </Routes>
-      </Provider>
+    <Routes>
+      <Route path='/' element={(<Home />)} />
+      <Route path='/good/:id' element={<GoodItem />} />
+      <Route path='*' element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
