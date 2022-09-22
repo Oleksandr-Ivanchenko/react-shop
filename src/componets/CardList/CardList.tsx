@@ -16,7 +16,7 @@ export const CardList: React.FC = () => {
     getGoods().then(goodsFromServer => {
       dispatch(setGoodsAction(goodsFromServer));
     })
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <div className="cardlist">

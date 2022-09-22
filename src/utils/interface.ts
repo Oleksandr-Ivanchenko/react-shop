@@ -16,10 +16,16 @@ export interface Filters {
 
 export interface State {
   goods: Good[],
-  filters: Filters
+  filters: Filters,
+  categories: SelectorOption[],
 }
 
 export interface Action {
   type: string,
   payload: any
+}
+
+export interface SelectorOption {
+  key: string;
+  name: string;
 }

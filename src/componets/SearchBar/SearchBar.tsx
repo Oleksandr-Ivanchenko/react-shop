@@ -1,73 +1,43 @@
-import './SearchBar.scss';
-import { Paper, Slider, Typography } from '@mui/material';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import { Filters } from '../../utils/interface';
-import { getFilters } from '../../store/selectors';
-import { useSelector, useDispatch } from 'react-redux';
-import { setFiltersAction } from '../../store/actions';
+import { useEffect } from 'react';
+import "./SearchBar.scss";
+import { Paper, Slider, Typography } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { Filters } from "../../utils/interface";
+import { getCategoriesSelector, getFilters } from "../../store/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategoriesAction, setFiltersAction } from "../../store/actions";
+import { getCategories } from "../../api/api";
 
-
-const categories = [
-  {
-    key: 'all',
-    name: 'Все'
-  },
-  {
-    key: 'cameras',
-    name: 'Камеры'
-  },
-  {
-    key: 'computers',
-    name: 'Компьютеры'
-  },
-  {
-    key: 'system unit',
-    name: 'Системные блоки'
-  },
-  {
-    key: 'portable console',
-    name: 'Портотивные консоли'
-  },
-  {
-    key: 'game console',
-    name: 'Консоли'
-  },
-  {
-    key: 'laptop',
-    name: 'Ноутбуки'
-  },
-  {
-    key: 'Smart-Speaker',
-    name: 'Умные Колонки'
-  },
-  {
-    key: 'telephones',
-    name: 'Телефоны'
-  },
-];
 
 const sortOptions = [
   {
-    key: 'alpASC',
-    name: 'Alphabet order A-Z'
+    "key": "alpASC",
+    "name": "Alphabet order A-Z"
   },
   {
-    key: 'alpDESC',
-    name: 'In Alphabet order Z-A'
+    "key": "alpDESC",
+    "name": "In Alphabet order Z-A"
   },
   {
-    key: 'priceASC',
-    name: 'Price from Low to Hight'
+    "key": "priceASC",
+    "name": "Price from Low to Hight"
   },
   {
-    key: 'priceDESC',
-    name: 'Price from Hight to Low'
+    "key": "priceDESC",
+    "name": "Price from Hight to Low"
   },
 ]
 
 export const SearchBar = () => {
-  const filters: Filters = useSelector(getFilters);
   const dispatch = useDispatch();
+  const categories = useSelector(getCategoriesSelector);
+  const filters: Filters = useSelector(getFilters);
+
+  useEffect(() => { 
+    getCategories().then(categoriesFromServer => {
+      dispatch(setCategoriesAction(categoriesFromServer));
+    })
+  }, [dispatch]);
 
   const valuetext = (value: number) => {
     return `${value}USD`;
@@ -95,7 +65,7 @@ export const SearchBar = () => {
             id="demo-simple-select"
             value={filters.category}
             label="Category"
-            onChange={(e) => handleChange(e, 'category')}
+            onChange={(e) => handleChange(e, "category")}
           >
             {categories.map((category) => (
               <MenuItem
@@ -114,9 +84,9 @@ export const SearchBar = () => {
           <Slider
             min={0}
             max={1000}
-            getAriaLabel={() => 'Price range'}
+            getAriaLabel={() => "Price range"}
             value={filters.price}
-            onChange={(e) => handleChange(e, 'price')}
+            onChange={(e) => handleChange(e, "price")}
             valueLabelDisplay="auto"
             getAriaValueText={valuetext}
           />
@@ -128,10 +98,10 @@ export const SearchBar = () => {
             id="demo-simple-select"
             value={filters.sort}
             label="Sort by"
-            onChange={(e) => handleChange(e, 'sort')}
+            onChange={(e) => handleChange(e, "sort")}
           >
             {sortOptions.map((option) => (
-              <MenuItem value={option.key}>{option.name}</MenuItem>
+              <MenuItem key={option.key} value={option.key}>{option.name}</MenuItem>
             ))}
           </Select>
         </FormControl>

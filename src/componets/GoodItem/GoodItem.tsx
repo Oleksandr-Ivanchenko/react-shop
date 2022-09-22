@@ -15,9 +15,9 @@ export function GoodItem() {
 
   useEffect(() => {
     getGood(id || '').then((res: Good) => {
-      setGood(res)
+      setGood(res);
     })
-  }, [id])
+  }, [id]);
   
 
   return (
@@ -32,8 +32,8 @@ export function GoodItem() {
         alt="product"
       />
       <div className='good__info'>
-        <Typography gutterBottom variant="h5" component="div"> Brand: {good.brand} </Typography>
         <Typography gutterBottom variant="h5" component="div"> Model: {good.name}  </Typography>
+        <Typography gutterBottom variant="h5" component="div"> Brand: {good.brand} </Typography>
         <Typography gutterBottom variant="h5" component="div"> Price: {good.cost} USD  </Typography>
         <Typography variant="body2" color="text.secondary"> {good.description} </Typography>
       </div>

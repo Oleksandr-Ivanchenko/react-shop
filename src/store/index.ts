@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import { Action, State } from '../utils/interface';
-import { ADD_GOOD, SET_GOODS, SET_FILTERS } from './actions';
+import { ADD_GOOD, SET_GOODS, SET_FILTERS, SET_CATEGORIES } from './actions';
 
 const initialState: State = {
   goods: [],
@@ -9,6 +9,7 @@ const initialState: State = {
     price: [0, 1000],
     sort: 'alpASC',
   },
+  categories: [],
 };
 
 const reducer = (state = initialState, action: Action) => {
@@ -34,6 +35,12 @@ const reducer = (state = initialState, action: Action) => {
         },
       }
 
+    case SET_CATEGORIES:
+    return {
+      ...state,
+      categories: [...action.payload],
+    }
+    
     default:
       return state;
   }

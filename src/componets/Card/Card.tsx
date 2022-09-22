@@ -33,8 +33,8 @@ export function Card({
             />
             <CardContent>
               <div className='card__info'>
-                <Typography gutterBottom variant="h5" component="div"> Brand: {brand} </Typography>
                 <Typography gutterBottom variant="h5" component="div"> Model: {name}  </Typography>
+                <Typography gutterBottom variant="h5" component="div"> Brand: {brand} </Typography>
                 <Typography gutterBottom variant="h5" component="div"> Price: {cost} USD  </Typography>
                 <Typography variant="body2" color="text.secondary"> {description} </Typography>
               </div>

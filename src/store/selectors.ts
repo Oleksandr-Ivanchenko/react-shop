@@ -23,3 +23,5 @@ export const getGoodsSelector = (filters: Filters) =>  (state: State) => state.g
   });
 
 export const getFilters = (state: State) => state.filters; 
+
+export const getCategoriesSelector = (state: State) => state.categories;
