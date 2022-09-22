@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const NotFoundPage = () => {
   return (
     <div>
@@ -7,4 +8,4 @@ const NotFoundPage = () => {
   )
 }
 
-export {NotFoundPage};
+export { NotFoundPage };
